@@ -50,6 +50,12 @@
       "uniqueId": "73b16b27-3be3-4ef0-a7a1-512173cff116",
       "input": [],
       "output": []
+    },
+    {
+      "filePath": "RetrieveClientSecurityHash.xaml",
+      "uniqueId": "4ccc2622-3447-46c4-857c-ba4201c0b5cf",
+      "input": [],
+      "output": []
     }
   ],
   "isTemplate": false,
