@@ -5,7 +5,7 @@
     <x:Property Name="io_Sha1OnlineBrowser" Type="InOutArgument(ui:Browser)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>653,1638</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>653,1762</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -76,7 +76,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RetrieveClientSecurityHash" sap:VirtualizedContainerService.HintSize="545,1473" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RetrieveClientSecurityHash" sap:VirtualizedContainerService.HintSize="545,1597" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="Sha1OnlineBrowser" />
       <Variable x:TypeArguments="x:String" Default="http://www.sha1-online.com" Name="Sha1OnlineURL" />
@@ -151,18 +151,19 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser -SHA1 online" sap:VirtualizedContainerService.HintSize="503,767" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="38d593ccc80187aebfe9a6e7b13304bc" Selector="&lt;html app='chrome.exe' title='SHA1 online' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser -SHA1 online" sap:VirtualizedContainerService.HintSize="503,891" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="38d593ccc80187aebfe9a6e7b13304bc" Selector="&lt;html app='chrome.exe' title='SHA1 online' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,621" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,745" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <ui:MinimizeWindow Window="{x:Null}" DisplayName="Minimize Window" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MinimizeWindow_2" />
             <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'editable text'" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1">
               <ui:TypeInto.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="023017f0-f6d9-41c7-a3bd-a1d636f1b4a4" InformativeScreenshot="bc99a661dd62c926ed7427c830ad08c5" Selector="&lt;ctrl name='SHA1 online' role='document' /&gt;&lt;ctrl role='editable text' /&gt;">
@@ -224,6 +225,7 @@
                 <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">"sha1: "+out_SecurityValue</mca:CSharpValue>
               </InArgument>
             </WriteLine>
+            <ui:MinimizeWindow Window="{x:Null}" DisplayName="Minimize Window" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MinimizeWindow_1" />
           </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>

@@ -40,7 +40,13 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "7003a6e2-d8d0-49ff-957f-67aee88b2de7",
+        "fileName": "TestCases\\UpdateWorkItemTestCase.xaml"
+      }
+    ],
     "modernBehavior": false
   },
   "expressionLanguage": "CSharp",
