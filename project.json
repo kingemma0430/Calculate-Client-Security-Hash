@@ -1,7 +1,7 @@
 {
   "name": "Calculate Client Security Hash",
   "description": "Generate the Security Hash for each Client based on their personal information",
-  "main": "Main.xaml",
+  "main": "DataScraping.xaml",
   "dependencies": {
     "UiPath": "[21.4.25.3292]",
     "UiPath.Credentials.Activities": "[1.1.6479.13204]",
@@ -60,6 +60,12 @@
     {
       "filePath": "RetrieveClientSecurityHash.xaml",
       "uniqueId": "4ccc2622-3447-46c4-857c-ba4201c0b5cf",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "DataScraping.xaml",
+      "uniqueId": "aeabeb17-c2e3-4402-b5d2-34be8eb28d5b",
       "input": [],
       "output": []
     }
