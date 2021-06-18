@@ -5,7 +5,7 @@
     <x:Property Name="io_Sha1OnlineBrowser" Type="InOutArgument(ui:Browser)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1207,1762</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>777,1708</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -75,7 +75,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RetrieveClientSecurityHash" sap:VirtualizedContainerService.HintSize="545,1597" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RetrieveClientSecurityHash" sap:VirtualizedContainerService.HintSize="787,1543" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="Sha1OnlineBrowser" />
       <Variable x:TypeArguments="x:String" Default="http://www.sha1-online.com" Name="Sha1OnlineURL" />
@@ -85,7 +85,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If sap:VirtualizedContainerService.HintSize="503,372" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap:VirtualizedContainerService.HintSize="745,419" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">io_Sha1OnlineBrowser==null</mca:CSharpValue>
@@ -98,18 +98,30 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser-Sha1-online website" sap:VirtualizedContainerService.HintSize="467,188" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True">
+        <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser-Sha1-online website" sap:VirtualizedContainerService.HintSize="467,256" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True">
           <ui:OpenBrowser.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,85" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="305,153" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="ui:Browser">
+                      <mca:CSharpReference x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">io_Sha1OnlineBrowser</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="ui:Browser">
+                      <mca:CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">Sha1OnlineBrowser</mca:CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
               </Sequence>
             </ActivityAction>
           </ui:OpenBrowser.Body>
@@ -125,20 +137,11 @@
           </ui:OpenBrowser.Url>
         </ui:OpenBrowser>
       </If.Then>
+      <If.Else>
+        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="233,63" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Sha1-online website will be open" />
+      </If.Else>
     </If>
-    <Assign sap:VirtualizedContainerService.HintSize="503,61" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="ui:Browser">
-          <mca:CSharpReference x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">io_Sha1OnlineBrowser</mca:CSharpReference>
-        </OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="ui:Browser">
-          <mca:CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">Sha1OnlineBrowser</mca:CSharpValue>
-        </InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign DisplayName="Assign-Clear out_SecurityValue" sap:VirtualizedContainerService.HintSize="503,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign-Clear out_SecurityValue" sap:VirtualizedContainerService.HintSize="745,61" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">
           <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">out_SecurityValue</mca:CSharpReference>
@@ -150,7 +153,7 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser -SHA1 online" sap:VirtualizedContainerService.HintSize="503,891" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="38d593ccc80187aebfe9a6e7b13304bc" Selector="&lt;html app='chrome.exe' title='SHA1 online' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser -SHA1 online" sap:VirtualizedContainerService.HintSize="745,891" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="38d593ccc80187aebfe9a6e7b13304bc" Selector="&lt;html app='chrome.exe' title='SHA1 online' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>

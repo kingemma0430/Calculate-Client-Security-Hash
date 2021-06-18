@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1207,5276" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="928,5379" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -97,7 +97,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Requirement: Generate the Security Hash for each Client hased on their personal information.&#xD;&#xA;&#xD;&#xA;If the Client has been Update to &quot;Completed&quot;, will be skipped, but you can change it in &quot;Filter Data Table With Type and Status&quot; sequence in ExtractWorkItems.xaml&#xD;&#xA;&#xD;&#xA;Step Short Description&#xD;&#xA;1.1 Open the ACME System 1 Web Application.&#xD;&#xA;1.2 Log in to System 1. Required input data: email and password.&#xD;&#xA;1.3 Access the Dashboard - the central location, where the user can pick a specific menu item.&#xD;&#xA;1.4 Access the Work Items listing to view all the available tasks to be performed (Output data: Work Items).&#xD;&#xA;1.5 For each activity of the WI5 type, perform the following steps:&#xD;&#xA;1.5.A Open the Details page of the selected activity to retrieve the Client Details.&#xD;&#xA;1.5.B Open the SHA1 Online webpage - http://www.sha1-online.com , and provide the following input: ClientID ClientCountry. Replace all the variables with                  the corresponding values. Use dashes between each item and the above.&#xD;&#xA;1.5.C Retrieve the Client Security Hash value from the webpage. &#xD;&#xA;1.5.D Go back to Work Item Details and open Update Work Item.&#xD;&#xA;1.5.E Set the status to “Completed”. Add a comment with the obtained SecurityHash.&#xD;&#xA;1.6 Continue with the next WI5 Activity.&#xD;&#xA;1.7 Close all website (ACME and sha1-online)" DisplayName="Sequence-Open ACME" sap:VirtualizedContainerService.HintSize="938,5111" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Requirement: Generate the Security Hash for each Client hased on their personal information.&#xD;&#xA;&#xD;&#xA;If the Client has been Update to &quot;Completed&quot;, will be skipped, but you can change it in &quot;Filter Data Table With Type and Status&quot; sequence in ExtractWorkItems.xaml&#xD;&#xA;&#xD;&#xA;Step Short Description&#xD;&#xA;1.1 Open the ACME System 1 Web Application.&#xD;&#xA;1.2 Log in to System 1. Required input data: email and password.&#xD;&#xA;1.3 Access the Dashboard - the central location, where the user can pick a specific menu item.&#xD;&#xA;1.4 Access the Work Items listing to view all the available tasks to be performed (Output data: Work Items).&#xD;&#xA;1.5 For each activity of the WI5 type, perform the following steps:&#xD;&#xA;1.5.A Open the Details page of the selected activity to retrieve the Client Details.&#xD;&#xA;1.5.B Open the SHA1 Online webpage - http://www.sha1-online.com , and provide the following input: ClientID ClientCountry. Replace all the variables with                  the corresponding values. Use dashes between each item and the above.&#xD;&#xA;1.5.C Retrieve the Client Security Hash value from the webpage. &#xD;&#xA;1.5.D Go back to Work Item Details and open Update Work Item.&#xD;&#xA;1.5.E Set the status to “Completed”. Add a comment with the obtained SecurityHash.&#xD;&#xA;1.6 Continue with the next WI5 Activity.&#xD;&#xA;1.7 Close all website (ACME and sha1-online)" DisplayName="Sequence-Open ACME" sap:VirtualizedContainerService.HintSize="938,5214" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="https://acme-test.uipath.com/login" Name="ACMEUrl" />
       <Variable x:TypeArguments="ui:Browser" Name="CurrentBrowser" />
@@ -142,13 +142,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:GetSecureCredential>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" sap2010:Annotation.AnnotationText="1. Extract WorkItems from ACME website&#xD;&#xA;2. Filter WorkItems by Type=&quot;WI5&quot;&#xD;&#xA;3. Extract Client Id, CLient Name and Client Country from ACME client Detail Page" BrowserType="Chrome" DisplayName="Open Browser-ACME website" Hidden="False" sap:VirtualizedContainerService.HintSize="896,4092" sap2010:WorkflowViewState.IdRef="OpenBrowser_3" NewSession="True" Private="False">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" sap2010:Annotation.AnnotationText="1. Extract WorkItems from ACME website&#xD;&#xA;2. Filter WorkItems by Type=&quot;WI5&quot;&#xD;&#xA;3. Extract Client Id, CLient Name and Client Country from ACME client Detail Page" BrowserType="Chrome" DisplayName="Open Browser-ACME website" Hidden="False" sap:VirtualizedContainerService.HintSize="896,4195" sap2010:WorkflowViewState.IdRef="OpenBrowser_3" NewSession="True" Private="False">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="Open Browser ACME website" DisplayName="Sequence-Open Browser ACME website" sap:VirtualizedContainerService.HintSize="862,3926" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence sap2010:Annotation.AnnotationText="Open Browser ACME website" DisplayName="Sequence-Open Browser ACME website" sap:VirtualizedContainerService.HintSize="862,4029" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -156,7 +156,7 @@
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Do-Main logic for Open ACME Browser" sap:VirtualizedContainerService.HintSize="820,3710" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="Do-Main logic for Open ACME Browser" sap:VirtualizedContainerService.HintSize="820,3813" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <Sequence.Variables>
                 <Variable x:TypeArguments="sd:DataTable" Name="WorkItems" />
               </Sequence.Variables>
@@ -221,13 +221,13 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
-              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="1. Open Work Item Detail Page to get  Client ID,Client Name and Client Country&#xD;&#xA;2. Copy ClientID-Client Name-Client Country to Sha1-online and get hash value&#xD;&#xA;3. Use hash value to update WorkItem" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="778,2979" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="1. Open Work Item Detail Page to get  Client ID,Client Name and Client Country&#xD;&#xA;2. Copy ClientID-Client Name-Client Country to Sha1-online and get hash value&#xD;&#xA;3. Use hash value to update WorkItem" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="778,3082" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                 <ui:ForEachRow.Body>
                   <ActivityAction x:TypeArguments="sd:DataRow">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                     </ActivityAction.Argument>
-                    <Sequence sap2010:Annotation.AnnotationText="Get WI5 WorkItems" DisplayName="Body" sap:VirtualizedContainerService.HintSize="744,2795" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <Sequence sap2010:Annotation.AnnotationText="Get WI5 WorkItems" DisplayName="Body" sap:VirtualizedContainerService.HintSize="744,2898" sap2010:WorkflowViewState.IdRef="Sequence_9">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="ItemId" />
                         <Variable x:TypeArguments="x:String" Name="CurrentWIID" />
@@ -245,7 +245,7 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence sap2010:Annotation.AnnotationText="Extract Client Information" DisplayName="Sequence-Extract Client Information" sap:VirtualizedContainerService.HintSize="702,2672" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <Sequence sap2010:Annotation.AnnotationText="Extract Client Information" DisplayName="Sequence-Extract Client Information" sap:VirtualizedContainerService.HintSize="702,2775" sap2010:WorkflowViewState.IdRef="Sequence_11">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="ClientInformation" />
                           <Variable x:TypeArguments="scg:List(x:String)" Name="ClientInfomarionList" />
@@ -299,7 +299,7 @@
                             </OutArgument>
                           </ui:GetFullText.Text>
                         </ui:GetFullText>
-                        <If sap:VirtualizedContainerService.HintSize="660,2203" sap2010:WorkflowViewState.IdRef="If_2">
+                        <If sap:VirtualizedContainerService.HintSize="660,2306" sap2010:WorkflowViewState.IdRef="If_2">
                           <If.Condition>
                             <InArgument x:TypeArguments="x:Boolean">
                               <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">!string.IsNullOrEmpty(ClientInformation)</mca:CSharpValue>
@@ -312,7 +312,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence sap2010:Annotation.AnnotationText="Get Client Id, Name and Country" DisplayName="Sequence-Get Client Id, Name and Country" sap:VirtualizedContainerService.HintSize="624,2021" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <Sequence sap2010:Annotation.AnnotationText="Get Client Id, Name and Country" DisplayName="Sequence-Get Client Id, Name and Country" sap:VirtualizedContainerService.HintSize="624,2124" sap2010:WorkflowViewState.IdRef="Sequence_13">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="ClientId" />
                                 <Variable x:TypeArguments="x:String" Name="ClientName" />
@@ -473,6 +473,11 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
+                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="582,63" sap2010:WorkflowViewState.IdRef="WriteLine_4">
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49">"Sha1-"+Sha1OnlineWebBrowser==null?"null":"Already open"</mca:CSharpValue>
+                                </InArgument>
+                              </WriteLine>
                               <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Click Update Work Item  button to open Update Work Item dialog" ClickType="CLICK_SINGLE" DisplayName="Click -Update Work Item to open Update Work Item dialog" sap:VirtualizedContainerService.HintSize="582,152" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
                                 <ui:Click.CursorPosition>
                                   <ui:CursorPosition Position="Center">
