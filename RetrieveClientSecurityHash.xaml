@@ -5,7 +5,7 @@
     <x:Property Name="io_Sha1OnlineBrowser" Type="InOutArgument(ui:Browser)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>653,1762</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1207,1762</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -73,7 +73,6 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="RetrieveClientSecurityHash" sap:VirtualizedContainerService.HintSize="545,1597" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -193,7 +192,7 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="58c2a55e-93e1-4883-9947-523775c50409" InformativeScreenshot="eb894db298b7712f1b74314d9e9d5312" Selector="&lt;ctrl name='SHA1 online' role='document' /&gt;&lt;ctrl name='hash' role='push button' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="58c2a55e-93e1-4883-9947-523775c50409" InformativeScreenshot="eb894db298b7712f1b74314d9e9d5312" Selector="&lt;webctrl type='submit' aaname='hash' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>

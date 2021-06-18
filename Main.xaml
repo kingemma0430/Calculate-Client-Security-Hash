@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="964,5170" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="928,5786" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -97,11 +97,19 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Sequence-Open ACME" sap:VirtualizedContainerService.HintSize="974,5005" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Generate the Security Hash for each Client hased on their personal information.&#xD;&#xA;If the Client has been Update to &quot;Completed&quot;, will be skipped.&#xD;&#xA;&#xD;&#xA;Step Short Description&#xD;&#xA;1.1 Open the ACME System 1 Web Application.&#xD;&#xA;1.2 Log in to System 1. Required input data: email and password.&#xD;&#xA;1.3 Access the Dashboard - the central location, where the user can pick a specific menu item.&#xD;&#xA;1.4 Access the Work Items listing to view all the available tasks to be performed (Output data: Work Items).&#xD;&#xA;1.5 For each activity of the WI5 type, perform the following steps:&#xD;&#xA;1.5.A Open the Details page of the selected activity to retrieve the Client Details.&#xD;&#xA;1.5.B Open the SHA1 Online webpage - http://www.sha1-online.com , and provide the following input: ClientID ClientCountry. Replace all the variables with                  the corresponding values. Use dashes between each item and the above.&#xD;&#xA;1.5.C Retrieve the Client Security Hash value from the webpage. &#xD;&#xA;1.5.D Go back to Work Item Details and open Update Work Item.&#xD;&#xA;1.5.E Set the status to “Completed”. Add a comment with the obtained SecurityHash.&#xD;&#xA;1.6 Continue with the next WI5 Activity.&#xD;&#xA;1.7 Close all website (ACME and sha1-online)" DisplayName="Sequence-Open ACME" sap:VirtualizedContainerService.HintSize="938,5621" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="https://acme-test.uipath.com/login" Name="ACMEUrl" />
-      <Variable x:TypeArguments="x:String" Name="UserName" />
-      <Variable x:TypeArguments="ss:SecureString" Name="Password" />
+      <Variable x:TypeArguments="x:String" Name="UserName">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">18901599114@163.com</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="ss:SecureString" Name="Password">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_44">new System.Net.NetworkCredential("", "273509239").SecurePassword</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="ui:Browser" Name="CurrentBrowser" />
       <Variable x:TypeArguments="x:String" Name="ACMEWorkItemsURL">
         <Variable.Default>
@@ -114,32 +122,49 @@
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetSecureCredential sap2010:Annotation.AnnotationText="Open &quot;Manager Windows Credetials&quot; and click &quot;Add a generic credential&quot;, and then input ACME&quot; as Internet or network address, User name and Password for ACME website" CredentialType="Generic" DisplayName="Get secure credential" sap:VirtualizedContainerService.HintSize="932,161" sap2010:WorkflowViewState.IdRef="GetSecureCredential_1" PersistanceType="Enterprise" Target="ACME">
-      <ui:GetSecureCredential.Password>
-        <OutArgument x:TypeArguments="ss:SecureString">
-          <mca:CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">Password</mca:CSharpReference>
-        </OutArgument>
-      </ui:GetSecureCredential.Password>
-      <ui:GetSecureCredential.Username>
-        <OutArgument x:TypeArguments="x:String">
-          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">UserName</mca:CSharpReference>
-        </OutArgument>
-      </ui:GetSecureCredential.Username>
+    <ui:CommentOut sap2010:Annotation.AnnotationText="My demo user name is 18901599114@163.com, password is 273509239, you can find UserName and Password in Variables.&#xD;&#xA;&#xD;&#xA;If user want to use window credential, please enbale this activity and follow &quot;Get security credential&quot; sequence to create yours." DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="896,445" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="326,270" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:GetSecureCredential sap2010:Annotation.AnnotationText="Open &quot;Manager Windows Credetials&quot; and click &quot;Add a generic credential&quot;, and then input ACME&quot; as Internet or network address, User name and Password for ACME website" CredentialType="Generic" DisplayName="Get secure credential" sap:VirtualizedContainerService.HintSize="284,178" sap2010:WorkflowViewState.IdRef="GetSecureCredential_1" PersistanceType="Enterprise" Target="ACME">
+            <ui:GetSecureCredential.Password>
+              <OutArgument x:TypeArguments="ss:SecureString">
+                <mca:CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">Password</mca:CSharpReference>
+              </OutArgument>
+            </ui:GetSecureCredential.Password>
+            <ui:GetSecureCredential.Username>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">UserName</mca:CSharpReference>
+              </OutArgument>
+            </ui:GetSecureCredential.Username>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:GetSecureCredential>
+        </Sequence>
+      </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </ui:GetSecureCredential>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" sap2010:Annotation.AnnotationText="1. Extract WorkItems from ACME website&#xD;&#xA;2. Filter WorkItems by Type=&quot;WI5&quot;&#xD;&#xA;3. Extract Client Id, CLient Name and Client Country from ACME client Detail Page" BrowserType="Chrome" DisplayName="Open Browser-ACME website" Hidden="False" sap:VirtualizedContainerService.HintSize="932,4573" sap2010:WorkflowViewState.IdRef="OpenBrowser_3" NewSession="True" Private="False">
+    </ui:CommentOut>
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" sap2010:Annotation.AnnotationText="1. Extract WorkItems from ACME website&#xD;&#xA;2. Filter WorkItems by Type=&quot;WI5&quot;&#xD;&#xA;3. Extract Client Id, CLient Name and Client Country from ACME client Detail Page" BrowserType="Chrome" DisplayName="Open Browser-ACME website" Hidden="False" sap:VirtualizedContainerService.HintSize="896,4403" sap2010:WorkflowViewState.IdRef="OpenBrowser_3" NewSession="True" Private="False">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="Open Browser ACME website" DisplayName="Sequence-Open Browser ACME website" sap:VirtualizedContainerService.HintSize="898,4407" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence sap2010:Annotation.AnnotationText="Open Browser ACME website" DisplayName="Sequence-Open Browser ACME website" sap:VirtualizedContainerService.HintSize="862,4237" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -147,7 +172,7 @@
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Do-Main logic for Open ACME Browser" sap:VirtualizedContainerService.HintSize="856,4191" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="Do-Main logic for Open ACME Browser" sap:VirtualizedContainerService.HintSize="820,4021" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <Sequence.Variables>
                 <Variable x:TypeArguments="sd:DataTable" Name="WorkItems" />
               </Sequence.Variables>
@@ -157,8 +182,8 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="814,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Type email/user name" ClickBeforeTyping="False" DisplayName="Type Into email" EmptyField="True" sap:VirtualizedContainerService.HintSize="814,165" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False">
+              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="778,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Type email/user name" ClickBeforeTyping="False" DisplayName="Type Into email" EmptyField="True" sap:VirtualizedContainerService.HintSize="778,165" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f8f14aab-efb6-4c6f-babc-bab9d86ceb0c" InformativeScreenshot="19a96ba9fdc44e2e6830ed60cdc2f9f3" Selector="&lt;webctrl id='email' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
                     <ui:Target.TimeoutMS>
@@ -177,7 +202,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:TypeInto>
-              <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="Type password" DisplayName="Type Secure Text -INPUT  password" EmptyField="True" sap:VirtualizedContainerService.HintSize="814,137" sap2010:WorkflowViewState.IdRef="TypeSecureText_1">
+              <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="Type password" DisplayName="Type Secure Text -INPUT  password" EmptyField="True" sap:VirtualizedContainerService.HintSize="778,137" sap2010:WorkflowViewState.IdRef="TypeSecureText_1">
                 <ui:TypeSecureText.SecureText>
                   <InArgument x:TypeArguments="ss:SecureString">
                     <mca:CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">Password</mca:CSharpValue>
@@ -196,7 +221,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:TypeSecureText>
-              <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Click &quot;Login&quot;" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON'" sap:VirtualizedContainerService.HintSize="814,137" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Click &quot;Login&quot;" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON'" sap:VirtualizedContainerService.HintSize="778,137" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -223,10 +248,32 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:Click>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Extract WorkItems" DisplayName="Invoke ExtractWorkItems workflow" sap:VirtualizedContainerService.HintSize="814,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ExtractWorkItems.xaml">
+              <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2000" DisplayName="Click 'push button  Work Items'" sap:VirtualizedContainerService.HintSize="778,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e6d5da14-d7d1-41b3-b883-0232f44f2b9d" InformativeScreenshot="4d37184f67ea362d7f17782bca7a038a" Selector="&lt;webctrl aaname='                          Work Items' parentid='dashmenu' tag='BUTTON' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Extract WorkItems with filter condition Type==&quot;WI5&quot; " DisplayName="Invoke ExtractWorkItems workflow" sap:VirtualizedContainerService.HintSize="778,160" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="ExtractWorkItems.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_workItems">
-                    <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_24">WorkItems</mca:CSharpReference>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_ExtractDataTable">
+                    <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_40">WorkItems</mca:CSharpReference>
                   </OutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
@@ -235,13 +282,13 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
-              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="1. Filter WorkItems by Type==&quot;WI5&quot; &#xD;&#xA;2. Copy ClientID-Client Name-Client Country to Sha1-online and get hash value&#xD;&#xA;3. Use hash value to update WorkItem" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="814,3293" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="1. Copy ClientID-Client Name-Client Country to Sha1-online and get hash value&#xD;&#xA;2. Use hash value to update WorkItem" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="778,2962" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                 <ui:ForEachRow.Body>
                   <ActivityAction x:TypeArguments="sd:DataRow">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                     </ActivityAction.Argument>
-                    <Sequence sap2010:Annotation.AnnotationText="Get WI5 WorkItems" DisplayName="Body" sap:VirtualizedContainerService.HintSize="780,3109" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <Sequence sap2010:Annotation.AnnotationText="Get WI5 WorkItems" DisplayName="Body" sap:VirtualizedContainerService.HintSize="744,2795" sap2010:WorkflowViewState.IdRef="Sequence_9">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="ItemId" />
                         <Variable x:TypeArguments="x:String" Name="CurrentWIID" />
@@ -259,304 +306,277 @@
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign sap:VirtualizedContainerService.HintSize="738,61" sap2010:WorkflowViewState.IdRef="Assign_2">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">
-                            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">CurrentType</mca:CSharpReference>
-                          </OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">
-                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">CurrentRow["Type"].ToString()</mca:CSharpValue>
-                          </InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <If sap2010:Annotation.AnnotationText="Get WI5 WorkItems" sap:VirtualizedContainerService.HintSize="738,2885" sap2010:WorkflowViewState.IdRef="If_1">
-                        <If.Condition>
-                          <InArgument x:TypeArguments="x:Boolean">
-                            <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">CurrentType==FilterType</mca:CSharpValue>
-                          </InArgument>
-                        </If.Condition>
+                      <Sequence sap2010:Annotation.AnnotationText="Extract Client Information" DisplayName="Sequence-Extract Client Information" sap:VirtualizedContainerService.HintSize="702,2672" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="ClientInformation" />
+                          <Variable x:TypeArguments="scg:List(x:String)" Name="ClientInfomarionList" />
+                          <Variable x:TypeArguments="x:String" Name="ClientInfomationFormat" />
+                        </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <If.Then>
-                          <Sequence sap2010:Annotation.AnnotationText="Extract Client Information" DisplayName="Sequence-Extract Client Information" sap:VirtualizedContainerService.HintSize="702,2672" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                            <Sequence.Variables>
-                              <Variable x:TypeArguments="x:String" Name="ClientInformation" />
-                              <Variable x:TypeArguments="scg:List(x:String)" Name="ClientInfomarionList" />
-                              <Variable x:TypeArguments="x:String" Name="ClientInfomationFormat" />
-                            </Sequence.Variables>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Assign sap:VirtualizedContainerService.HintSize="660,61" sap2010:WorkflowViewState.IdRef="Assign_1">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">
-                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">CurrentWIID</mca:CSharpReference>
-                                </OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">
-                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">CurrentRow["WIID"].ToString()</mca:CSharpValue>
-                                </InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <ui:NavigateTo DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="660,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1">
-                              <ui:NavigateTo.Browser>
-                                <InArgument x:TypeArguments="ui:Browser">
-                                  <mca:CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">CurrentBrowser</mca:CSharpValue>
-                                </InArgument>
-                              </ui:NavigateTo.Browser>
-                              <ui:NavigateTo.Url>
-                                <InArgument x:TypeArguments="x:String">
-                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">ACMEWorkItemsURL+CurrentWIID</mca:CSharpValue>
-                                </InArgument>
-                              </ui:NavigateTo.Url>
-                            </ui:NavigateTo>
-                            <ui:GetFullText IgnoreHidden="{x:Null}" DisplayName="Get Full Text 'grouping'" sap:VirtualizedContainerService.HintSize="660,106" sap2010:WorkflowViewState.IdRef="GetFullText_1">
-                              <ui:GetFullText.Target>
-                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fe55c7c4-cf00-407b-a451-d1e23b37ef54" InformativeScreenshot="fb76f8f603f0bb48bf1ffcb7354747d4" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;&lt;webctrl aaname='Calculate Client Security Hash' tag='DIV' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='DIV' class='panel-body' /&gt;">
-                                  <ui:Target.TimeoutMS>
-                                    <InArgument x:TypeArguments="x:Int32" />
-                                  </ui:Target.TimeoutMS>
-                                  <ui:Target.WaitForReady>
-                                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                                  </ui:Target.WaitForReady>
-                                </ui:Target>
-                              </ui:GetFullText.Target>
-                              <ui:GetFullText.Text>
-                                <OutArgument x:TypeArguments="x:String">
-                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">ClientInformation</mca:CSharpReference>
-                                </OutArgument>
-                              </ui:GetFullText.Text>
-                            </ui:GetFullText>
-                            <If sap:VirtualizedContainerService.HintSize="660,2203" sap2010:WorkflowViewState.IdRef="If_2">
-                              <If.Condition>
-                                <InArgument x:TypeArguments="x:Boolean">
-                                  <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">!string.IsNullOrEmpty(ClientInformation)</mca:CSharpValue>
-                                </InArgument>
-                              </If.Condition>
+                        <Assign sap:VirtualizedContainerService.HintSize="660,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">
+                              <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">CurrentWIID</mca:CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">CurrentRow["WIID"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:NavigateTo DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="660,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1">
+                          <ui:NavigateTo.Browser>
+                            <InArgument x:TypeArguments="ui:Browser">
+                              <mca:CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">CurrentBrowser</mca:CSharpValue>
+                            </InArgument>
+                          </ui:NavigateTo.Browser>
+                          <ui:NavigateTo.Url>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">ACMEWorkItemsURL+CurrentWIID</mca:CSharpValue>
+                            </InArgument>
+                          </ui:NavigateTo.Url>
+                        </ui:NavigateTo>
+                        <ui:GetFullText IgnoreHidden="{x:Null}" DisplayName="Get Full Text 'grouping'" sap:VirtualizedContainerService.HintSize="660,106" sap2010:WorkflowViewState.IdRef="GetFullText_1">
+                          <ui:GetFullText.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fe55c7c4-cf00-407b-a451-d1e23b37ef54" InformativeScreenshot="fb76f8f603f0bb48bf1ffcb7354747d4" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Work Items' /&gt;&lt;webctrl aaname='Calculate Client Security Hash' tag='DIV' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='DIV' class='panel-body' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetFullText.Target>
+                          <ui:GetFullText.Text>
+                            <OutArgument x:TypeArguments="x:String">
+                              <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">ClientInformation</mca:CSharpReference>
+                            </OutArgument>
+                          </ui:GetFullText.Text>
+                        </ui:GetFullText>
+                        <If sap:VirtualizedContainerService.HintSize="660,2203" sap2010:WorkflowViewState.IdRef="If_2">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">!string.IsNullOrEmpty(ClientInformation)</mca:CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap2010:Annotation.AnnotationText="Get Client Id, Name and Country" DisplayName="Sequence-Get Client Id, Name and Country" sap:VirtualizedContainerService.HintSize="624,2021" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Name="ClientId" />
+                                <Variable x:TypeArguments="x:String" Name="ClientName" />
+                                <Variable x:TypeArguments="x:String" Name="ClientCountry" />
+                                <Variable x:TypeArguments="x:Int32" Name="ClientInfomationOption">
+                                  <Variable.Default>
+                                    <Literal x:TypeArguments="x:Int32" />
+                                  </Variable.Default>
+                                </Variable>
+                                <Variable x:TypeArguments="x:String" Name="SecurityValue" />
+                              </Sequence.Variables>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <If.Then>
-                                <Sequence sap2010:Annotation.AnnotationText="Get Client Id, Name and Country" DisplayName="Sequence-Get Client Id, Name and Country" sap:VirtualizedContainerService.HintSize="624,2021" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                                  <Sequence.Variables>
-                                    <Variable x:TypeArguments="x:String" Name="ClientId" />
-                                    <Variable x:TypeArguments="x:String" Name="ClientName" />
-                                    <Variable x:TypeArguments="x:String" Name="ClientCountry" />
-                                    <Variable x:TypeArguments="x:Int32" Name="ClientInfomationOption">
-                                      <Variable.Default>
-                                        <Literal x:TypeArguments="x:Int32" />
-                                      </Variable.Default>
-                                    </Variable>
-                                    <Variable x:TypeArguments="x:String" Name="SecurityValue" />
-                                  </Sequence.Variables>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap2010:Annotation.AnnotationText="Split ClientInformation to List" DisplayName="Assign- Split ClientInformation to List" sap:VirtualizedContainerService.HintSize="582,92" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="scg:List(x:String)">
-                                        <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">ClientInfomarionList</mca:CSharpReference>
-                                      </OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="scg:List(x:String)">
-                                        <mca:CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">ClientInformation.Split('\n').Where(x=&gt;x!=null &amp;&amp; x.Contains(" Client ")).ToList()</mca:CSharpValue>
-                                      </InArgument>
-                                    </Assign.Value>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </Assign>
-                                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Build ClientInformationFormat value: ClientId-ClientName-ClientCountry" DisplayName="For Each- Loop Client Information List" sap:VirtualizedContainerService.HintSize="582,1103" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
-                                    <ui:ForEach.Body>
-                                      <ActivityAction x:TypeArguments="x:String">
-                                        <ActivityAction.Argument>
-                                          <DelegateInArgument x:TypeArguments="x:String" Name="item" />
-                                        </ActivityAction.Argument>
-                                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="546,937" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <Assign sap2010:Annotation.AnnotationText="Client Information Options:&#xD;&#xA;0-nothing need to do,&#xD;&#xA;1-Client ID, &#xD;&#xA;2-Client Name,&#xD;&#xA;3-Client Country" DisplayName="Assign-ClientInformationOption" sap:VirtualizedContainerService.HintSize="504,158" sap2010:WorkflowViewState.IdRef="Assign_8">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Int32">
-                                                <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_37">ClientInfomationOption</mca:CSharpReference>
-                                              </OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Int32">
-                                                <mca:CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">item.Contains("Client ID:")?1:item.Contains("Client Name:")?2:item.Contains("Client Country:")?3:0</mca:CSharpValue>
-                                              </InArgument>
-                                            </Assign.Value>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </Assign>
-                                          <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Assign values to ClientId, ClientName and ClientCountry" DisplayName="Switch-Assign Values to Client Id,Name and Country" sap:VirtualizedContainerService.HintSize="504,647" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-                                            <Switch.Expression>
-                                              <InArgument x:TypeArguments="x:Int32">
-                                                <mca:CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">ClientInfomationOption</mca:CSharpValue>
-                                              </InArgument>
-                                            </Switch.Expression>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <Assign x:Key="1" DisplayName="Assign-Client ID" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_4">
-                                              <Assign.To>
-                                                <OutArgument x:TypeArguments="x:String">
-                                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_30">ClientId</mca:CSharpReference>
-                                                </OutArgument>
-                                              </Assign.To>
-                                              <Assign.Value>
-                                                <InArgument x:TypeArguments="x:String">
-                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">item.Split(':')[1].TrimStart()</mca:CSharpValue>
-                                                </InArgument>
-                                              </Assign.Value>
-                                            </Assign>
-                                            <Assign x:Key="2" DisplayName="Assign- Client Name" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_5">
-                                              <Assign.To>
-                                                <OutArgument x:TypeArguments="x:String">
-                                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_33">ClientName</mca:CSharpReference>
-                                                </OutArgument>
-                                              </Assign.To>
-                                              <Assign.Value>
-                                                <InArgument x:TypeArguments="x:String">
-                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">item.Split(':')[1].TrimStart()</mca:CSharpValue>
-                                                </InArgument>
-                                              </Assign.Value>
-                                            </Assign>
-                                            <Assign x:Key="3" DisplayName="Assign-Client Country" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_6">
-                                              <Assign.To>
-                                                <OutArgument x:TypeArguments="x:String">
-                                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_34">ClientCountry</mca:CSharpReference>
-                                                </OutArgument>
-                                              </Assign.To>
-                                              <Assign.Value>
-                                                <InArgument x:TypeArguments="x:String">
-                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">item.Split(':')[1].TrimStart()</mca:CSharpValue>
-                                                </InArgument>
-                                              </Assign.Value>
-                                            </Assign>
-                                          </Switch>
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ui:ForEach.Body>
-                                    <ui:ForEach.Values>
-                                      <InArgument x:TypeArguments="sc:IEnumerable">
-                                        <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">ClientInfomarionList</mca:CSharpValue>
-                                      </InArgument>
-                                    </ui:ForEach.Values>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:ForEach>
-                                  <Assign sap:VirtualizedContainerService.HintSize="582,61" sap2010:WorkflowViewState.IdRef="Assign_7">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:String">
-                                        <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">ClientInfomationFormat</mca:CSharpReference>
-                                      </OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">
-                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">ClientId+"-"+ClientName+"-"+ClientCountry</mca:CSharpValue>
-                                      </InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get Client Security Hash value from Sha1-online" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="582,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="RetrieveClientSecurityHash.xaml">
-                                    <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_InputValue">
-                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">ClientInfomationFormat</mca:CSharpValue>
-                                      </InArgument>
-                                      <OutArgument x:TypeArguments="x:String" x:Key="out_SecurityValue">
-                                        <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_39">SecurityValue</mca:CSharpReference>
-                                      </OutArgument>
-                                      <InOutArgument x:TypeArguments="ui:Browser" x:Key="io_Sha1OnlineBrowser">
-                                        <mca:CSharpReference x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpReference`1_38">Sha1OnlineWebBrowser</mca:CSharpReference>
-                                      </InOutArgument>
-                                    </ui:InvokeWorkflowFile.Arguments>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:InvokeWorkflowFile>
-                                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Click Update Work Item  button to open Update Work Item dialog" ClickType="CLICK_SINGLE" DisplayName="Click -Update Work Item to open Update Work Item dialog" sap:VirtualizedContainerService.HintSize="582,152" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
-                                    <ui:Click.CursorPosition>
-                                      <ui:CursorPosition Position="Center">
-                                        <ui:CursorPosition.OffsetX>
-                                          <InArgument x:TypeArguments="x:Int32" />
-                                        </ui:CursorPosition.OffsetX>
-                                        <ui:CursorPosition.OffsetY>
-                                          <InArgument x:TypeArguments="x:Int32" />
-                                        </ui:CursorPosition.OffsetY>
-                                      </ui:CursorPosition>
-                                    </ui:Click.CursorPosition>
-                                    <ui:Click.Target>
-                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="90f58c4f-8e98-4add-8304-21678dc76e06" InformativeScreenshot="7e03f5245907cb60c796ea38f81e0c9e" Selector="&lt;webctrl aaname=' Update Work Item' tag='BUTTON' type='button' /&gt;">
-                                        <ui:Target.TimeoutMS>
-                                          <InArgument x:TypeArguments="x:Int32" />
-                                        </ui:Target.TimeoutMS>
-                                        <ui:Target.WaitForReady>
-                                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                                        </ui:Target.WaitForReady>
-                                      </ui:Target>
-                                    </ui:Click.Target>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:Click>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Update Work Item" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="582,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="UpdateWorkItem.xaml">
-                                    <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_SecurityValue">
-                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_43">SecurityValue</mca:CSharpValue>
-                                      </InArgument>
-                                    </ui:InvokeWorkflowFile.Arguments>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:InvokeWorkflowFile>
-                                </Sequence>
-                              </If.Then>
-                            </If>
-                          </Sequence>
-                        </If.Then>
-                      </If>
+                              <Assign sap2010:Annotation.AnnotationText="Split ClientInformation to List" DisplayName="Assign- Split ClientInformation to List" sap:VirtualizedContainerService.HintSize="582,92" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="scg:List(x:String)">
+                                    <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">ClientInfomarionList</mca:CSharpReference>
+                                  </OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="scg:List(x:String)">
+                                    <mca:CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">ClientInformation.Split('\n').Where(x=&gt;x!=null &amp;&amp; x.Contains(" Client ")).ToList()</mca:CSharpValue>
+                                  </InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Build ClientInformationFormat value: ClientId-ClientName-ClientCountry" DisplayName="For Each- Loop Client Information List" sap:VirtualizedContainerService.HintSize="582,1103" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
+                                <ui:ForEach.Body>
+                                  <ActivityAction x:TypeArguments="x:String">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="546,937" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap2010:Annotation.AnnotationText="Client Information Options:&#xD;&#xA;0-nothing need to do,&#xD;&#xA;1-Client ID, &#xD;&#xA;2-Client Name,&#xD;&#xA;3-Client Country" DisplayName="Assign-ClientInformationOption" sap:VirtualizedContainerService.HintSize="504,158" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:Int32">
+                                            <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_37">ClientInfomationOption</mca:CSharpReference>
+                                          </OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:Int32">
+                                            <mca:CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">item.Contains("Client ID:")?1:item.Contains("Client Name:")?2:item.Contains("Client Country:")?3:0</mca:CSharpValue>
+                                          </InArgument>
+                                        </Assign.Value>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </Assign>
+                                      <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Assign values to ClientId, ClientName and ClientCountry" DisplayName="Switch-Assign Values to Client Id,Name and Country" sap:VirtualizedContainerService.HintSize="504,647" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                                        <Switch.Expression>
+                                          <InArgument x:TypeArguments="x:Int32">
+                                            <mca:CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">ClientInfomationOption</mca:CSharpValue>
+                                          </InArgument>
+                                        </Switch.Expression>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Assign x:Key="1" DisplayName="Assign-Client ID" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">
+                                              <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_30">ClientId</mca:CSharpReference>
+                                            </OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">item.Split(':')[1].TrimStart()</mca:CSharpValue>
+                                            </InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign x:Key="2" DisplayName="Assign- Client Name" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">
+                                              <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_33">ClientName</mca:CSharpReference>
+                                            </OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">item.Split(':')[1].TrimStart()</mca:CSharpValue>
+                                            </InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign x:Key="3" DisplayName="Assign-Client Country" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">
+                                              <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_34">ClientCountry</mca:CSharpReference>
+                                            </OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">item.Split(':')[1].TrimStart()</mca:CSharpValue>
+                                            </InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </Switch>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:ForEach.Body>
+                                <ui:ForEach.Values>
+                                  <InArgument x:TypeArguments="sc:IEnumerable">
+                                    <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">ClientInfomarionList</mca:CSharpValue>
+                                  </InArgument>
+                                </ui:ForEach.Values>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:ForEach>
+                              <Assign sap:VirtualizedContainerService.HintSize="582,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">
+                                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">ClientInfomationFormat</mca:CSharpReference>
+                                  </OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">ClientId+"-"+ClientName+"-"+ClientCountry</mca:CSharpValue>
+                                  </InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get Client Security Hash value from Sha1-online" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="582,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="RetrieveClientSecurityHash.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_InputValue">
+                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">ClientInfomationFormat</mca:CSharpValue>
+                                  </InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_SecurityValue">
+                                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_39">SecurityValue</mca:CSharpReference>
+                                  </OutArgument>
+                                  <InOutArgument x:TypeArguments="ui:Browser" x:Key="io_Sha1OnlineBrowser">
+                                    <mca:CSharpReference x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpReference`1_38">Sha1OnlineWebBrowser</mca:CSharpReference>
+                                  </InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                              <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="Click Update Work Item  button to open Update Work Item dialog" ClickType="CLICK_SINGLE" DisplayName="Click -Update Work Item to open Update Work Item dialog" sap:VirtualizedContainerService.HintSize="582,152" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                <ui:Click.CursorPosition>
+                                  <ui:CursorPosition Position="Center">
+                                    <ui:CursorPosition.OffsetX>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetX>
+                                    <ui:CursorPosition.OffsetY>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetY>
+                                  </ui:CursorPosition>
+                                </ui:Click.CursorPosition>
+                                <ui:Click.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="90f58c4f-8e98-4add-8304-21678dc76e06" InformativeScreenshot="7e03f5245907cb60c796ea38f81e0c9e" Selector="&lt;webctrl aaname=' Update Work Item' tag='BUTTON' type='button' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:Click.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:Click>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Update Work Item" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="582,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="UpdateWorkItem.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_SecurityValue">
+                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_43">SecurityValue</mca:CSharpValue>
+                                  </InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                          </If.Then>
+                        </If>
+                      </Sequence>
                     </Sequence>
                   </ActivityAction>
                 </ui:ForEachRow.Body>
@@ -574,7 +594,7 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEachRow>
             </Sequence>
-            <ui:CloseTab sap2010:Annotation.AnnotationText="Close ACME web browser" DisplayName="Close ACME Web Browser" sap:VirtualizedContainerService.HintSize="680,53" sap2010:WorkflowViewState.IdRef="CloseTab_1">
+            <ui:CloseTab sap2010:Annotation.AnnotationText="Close ACME web browser" DisplayName="Close ACME Web Browser" sap:VirtualizedContainerService.HintSize="820,53" sap2010:WorkflowViewState.IdRef="CloseTab_1">
               <ui:CloseTab.Browser>
                 <InArgument x:TypeArguments="ui:Browser">
                   <mca:CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">CurrentBrowser</mca:CSharpValue>
@@ -607,7 +627,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:OpenBrowser>
-    <If sap2010:Annotation.AnnotationText="Close Sha1 online web browser if existing" sap:VirtualizedContainerService.HintSize="756,99" sap2010:WorkflowViewState.IdRef="If_6">
+    <If sap2010:Annotation.AnnotationText="Close Sha1 online web browser if existing" sap:VirtualizedContainerService.HintSize="896,283" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_42">Sha1OnlineWebBrowser!=null</mca:CSharpValue>
