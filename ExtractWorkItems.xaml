@@ -3,7 +3,7 @@
     <x:Property Name="out_ExtractDataTable" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>653,1771</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1207,2193</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -78,7 +78,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Extract Work Items Data" DisplayName="Extract Work Items Data" sap:VirtualizedContainerService.HintSize="638,1606" sap2010:WorkflowViewState.IdRef="Sequence_21">
+  <Sequence sap2010:Annotation.AnnotationText="Extract Work Items Data" DisplayName="Extract Work Items Data" sap:VirtualizedContainerService.HintSize="638,2028" sap2010:WorkflowViewState.IdRef="Sequence_21">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="TotalExtractDataTable">
         <Variable.Default>
@@ -94,13 +94,15 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="User Do-While with Data Scraping to extract Work Items data" DisplayName="Do-Loop" sap:VirtualizedContainerService.HintSize="596,1483" sap2010:WorkflowViewState.IdRef="Sequence_20">
+    <Sequence sap2010:Annotation.AnnotationText="User Do-While with Data Scraping to extract Work Items data" DisplayName="Do-Loop" sap:VirtualizedContainerService.HintSize="596,1905" sap2010:WorkflowViewState.IdRef="Sequence_20">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="ExtractDataTable">
           <Variable.Default>
             <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">new System.Data.DataTable();</mca:CSharpValue>
           </Variable.Default>
         </Variable>
+        <Variable x:TypeArguments="x:String" Name="extractDataString" />
+        <Variable x:TypeArguments="x:String" Name="TotalExtractDataTableString" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -313,6 +315,50 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:FilterDataTable>
+      <ui:OutputDataTable sap2010:Annotation.AnnotationText="Output ExtractDataTable without Filtered" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="554,68" sap2010:WorkflowViewState.IdRef="OutputDataTable_1">
+        <ui:OutputDataTable.DataTable>
+          <InArgument x:TypeArguments="sd:DataTable">
+            <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">TotalExtractDataTable</mca:CSharpValue>
+          </InArgument>
+        </ui:OutputDataTable.DataTable>
+        <ui:OutputDataTable.Text>
+          <OutArgument x:TypeArguments="x:String">
+            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">TotalExtractDataTableString</mca:CSharpReference>
+          </OutArgument>
+        </ui:OutputDataTable.Text>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:OutputDataTable>
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="554,63" sap2010:WorkflowViewState.IdRef="WriteLine_2">
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">"Extract Data: "+TotalExtractDataTableString</mca:CSharpValue>
+        </InArgument>
+      </WriteLine>
+      <ui:OutputDataTable sap2010:Annotation.AnnotationText="Output ExtractDataTable with Filtered" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="554,68" sap2010:WorkflowViewState.IdRef="OutputDataTable_2">
+        <ui:OutputDataTable.DataTable>
+          <InArgument x:TypeArguments="sd:DataTable">
+            <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">out_ExtractDataTable</mca:CSharpValue>
+          </InArgument>
+        </ui:OutputDataTable.DataTable>
+        <ui:OutputDataTable.Text>
+          <OutArgument x:TypeArguments="x:String">
+            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">extractDataString</mca:CSharpReference>
+          </OutArgument>
+        </ui:OutputDataTable.Text>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:OutputDataTable>
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="554,63" sap2010:WorkflowViewState.IdRef="WriteLine_1">
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">"Extract Data: "+extractDataString</mca:CSharpValue>
+        </InArgument>
+      </WriteLine>
       <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" Delimitator="Comma" DisplayName="Write CSV" FilePath="data.csv" sap:VirtualizedContainerService.HintSize="554,158" sap2010:WorkflowViewState.IdRef="WriteCsvFile_5">
         <ui:WriteCsvFile.DataTable>
           <InArgument x:TypeArguments="sd:DataTable">
