@@ -263,7 +263,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:InterruptibleDoWhile>
-      <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filter ExtractDataTable with condition &quot;Type==WI5 and Status!=Completed&quot;  to out_ExtractDataTable" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="554,227" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" SelectColumnsMode="Keep">
+      <ui:FilterDataTable sap2010:Annotation.AnnotationText="Filter ExtractDataTable with condition &quot;Type==WI5 and Status!=Completed&quot;  to out_ExtractDataTable" DisplayName="Filter Data Table With Type and Status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="554,227" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" SelectColumnsMode="Keep">
         <ui:FilterDataTable.DataTable>
           <InArgument x:TypeArguments="sd:DataTable">
             <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">TotalExtractDataTable</mca:CSharpValue>
