@@ -37,3 +37,5 @@ If the Client has been Update to "Completed", will be skipped, but you can chang
 Zhen (Evan) Wang, Tel:18901599114, WeChat: 18901599114, EmaiL: 18901599114@163.com
 
 MIT
+
+Please keep the author's information.
